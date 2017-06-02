@@ -1,0 +1,6 @@
+
+chrome Version 56.0.2924.87
+Uncaught TypeError: Cannot read property 'current' of null
+
+firefox 51.0.1
+TypeError: b.dataAdapter is null

@@ -1,0 +1,62 @@
+<html>
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+<style type='text/css'>
+#select1 {
+	width: 600px;
+}
+.select2-container .select2-selection--multiple {
+	height: 300px;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+
+data1 = [{id: "tag A", text: "tag A"}, 
+  	 {id: "tag B", text: "tag B"},
+	 {id: "tag C", text: "tag C"},
+	 {id: "tag D", text: "tag D"},
+	 {id: "tag E", text: "tag E"},
+	 {id: "tag F", text: "tag F"}
+];
+
+data2 = [{id: "tag red", text: "tag red"}, 
+	 {id: "tag blue", text: "tag blue"},
+	 {id: "tag green", text: "tag green"}
+];
+
+$('#select1').select2({
+  tags: true,
+  data: data1
+});
+
+$('#select1').on('change', function(e) {
+	$('#select1').select2().empty();
+	$('#select1').select2({
+  		tags: true,
+  		data: data2
+	});
+	$('#select1').val(["tag blue"]).trigger('change.select2');		// https://github.com/select2/select2/issues/3620
+});
+
+});
+</script>
+
+</head>
+
+
+<body>
+
+<select id="select1" multiple="multiple"></select>
+
+</body>
+</html>

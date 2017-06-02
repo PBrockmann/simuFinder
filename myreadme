@@ -1,0 +1,31 @@
+
+https://github.com/select2/select2/issues/4933
+
+https://groups.google.com/forum/#!topic/select2/029FmVsEuKY
+http://jsfiddle.net/PBrockmann/74v2gzhe/
+
+==================================
+CICLAD
+==================================
+
+./create_list.bash > input.js
+
+
+==================================
+CURIE
+==================================
+
+ls -d1 /ccc/work/cont003/thredds/*/*/*/*/*/MONITORING > list1.txt
+
+ls -1d  /ccc/work/cont003/dods/public/*/*/*/*/*/MONITORING > list1.txt
+
+vi list1.txt 
+
+sed -e 's#/ccc/work/cont003/dods/public/#http://esgf.extra.cea.fr/thredds/catalog/work/#g' list1.txt
+
+
+==================================
+ADA
+==================================
+
+rsh ergon ls -d1 /linkhome/DODS/pub/*/*/*/*/*/MONITORING > list1.txt
