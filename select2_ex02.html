@@ -91,7 +91,7 @@ $('#myselect2').select2({
 			d.freq = 0;
 			$('#mytable').find("td").each(function(index, item) {
 				re = new RegExp(d.text, 'gi');
-				matches = $(item).html().match(re);
+				matches = $(item).text().match(re);
 				if (matches !== null) { d.freq++; }
 			});
 		}
@@ -102,7 +102,7 @@ $('#myselect2').select2({
 			d.freq = 0;
 			$('#mytable').find("td").each(function(index, item) {
 				re = new RegExp(d.text, 'gi');
-				matches = $(item).html().match(re);
+				matches = $(item).text().match(re);
 				if (matches !== null) { d.freq++; }
 			});
 		}

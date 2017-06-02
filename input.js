@@ -151,6 +151,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdCo
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-nnetau0/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-nolnmle/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-rnffwb0/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-rnffwb2/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM606-LR-pdCtrl/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM607.calving-LR-pdCtrl-01/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p48ethe/IPSLCM6/DEVT/pdControl/CM607-LR-pdCtrl-CALMOC-01/MONITORING
@@ -193,6 +194,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/ref4365l2883/PRO
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/ref4365l2883/PROD/amip/CL4.4365.L2883.ks/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/ref4365l2883/PROD/amip/CL4.4365.L2883/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/ref4365l2883/PROD/amip/CL4.4365.L2883.usda/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529tra/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-nudgeUV12h/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529tra/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-nudgeUV/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529tra/IPSLCM6/DEVT/pdControl/CM605.GUST.1-LR-pdCtrl-01/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529tra/IPSLCM6/DEVT/pdControl/CM605.GUST-LR-pdCtrl-01/MONITORING
@@ -409,6 +411,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdCo
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6.0.10.1Test-Pdctrl-02/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6.0.10.3b-Pdctrl-01/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011pre-LR-pdCtrl-fallv-01/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011pre-LR-pdCtrl-fallv-02/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011pre-LR-pdCtrl-fallv/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM606-LR-pdCtrl-b01a/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM606-LR-pdCtrl-b01b/MONITORING
@@ -448,6 +451,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/LMDZOR/TEST/clim/
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/LMDZOR/TEST/clim/CM607-LR.2bands/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/LMDZOR/TEST/clim/CM607-LR.2bands.opt/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/LMDZOR/TEST/clim/CM607-LR.3bands/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ggas/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-03/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ggas/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-gkdrag2/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ggas/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-gkwake4/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ggas/LMDZOR/DEVT/clim/LMDZ607divx2/MONITORING
@@ -546,6 +550,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdCon
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2.fallv-LR-pdctrl-01/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2.fallv-LR-pdctrl-02/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-cdrag8/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-hmin50/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-newmy/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-T9-1M/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2-LR-pdCtrl-TMAF-1M/MONITORING
@@ -556,6 +561,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdCon
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TMAF-1Y/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TMAF-Y2/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TMAF-Z2/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TNO9-1M/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TNO9-1Y/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TNOO-1Y/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM605.NOSU-LR-pdCtrl-01/MONITORING
