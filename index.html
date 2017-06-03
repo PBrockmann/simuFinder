@@ -16,7 +16,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js"></script>
 
-<script src="input.js"></script>
+<script src="input1.js"></script>
 
 <style type='text/css'>
 
@@ -76,11 +76,11 @@ input = input.split('\n').filter(function(d){return d});
 function randomHSL() { return 'hsla(' + (Math.random() * 360) + ', 50%, 80%, 1)'; } 
 
 //=====================================================
-wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', 'MONITORING', ''];
+wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', ''];
 wordsFreqDict = {}; wordsColorDict= {};
 
 for (var i=0; i<input.length; i++) {
-    $('#mytable').append('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    $('#mytable').append('<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
     words = input[i].split('/'); 
     words.forEach(function(word) {
 	if (wordsToRemove.indexOf(word) >= 0) { return; }
