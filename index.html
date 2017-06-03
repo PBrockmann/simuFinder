@@ -16,7 +16,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js"></script>
 
-<script src="input1.js"></script>
+<script src="input.js"></script>
 
 <style type='text/css'>
 
@@ -246,7 +246,7 @@ $('#run').on('click', function() {
 simuls = {};
 $('#mytable').find("td").each(function(index, item) {
 	//console.log(index+1, $(item).text());
-	simuls['simul'+ (index+1).toString()] = RemoveLastDirectoryPartOf($(item).text());
+	simuls['simul'+ (index+1).toString()] = $(item).text();
 });
 
 //console.log(simuls);
