@@ -3,6 +3,9 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/Ai
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/Cosp0
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010FallvAdjwk
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallvc
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallvcOrogA
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallvcOrogB
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallvcOrogC
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010FallvDragOce
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallv
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010Fallv
