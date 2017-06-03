@@ -1,6 +1,9 @@
 var input = `
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/AirsT0/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/Cosp0/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010FallvAdjwk/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallvc/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010FallvDragOce/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010fallv/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010Fallv/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZ6010/MONITORING
@@ -472,6 +475,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/IPSLCM6/DEVT/pdC
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM6010/createsnow/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM609climpdcontrl/CM609.m10b/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM609climpdcontrl/CM609.m11b/MONITORING
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM609climpdcontrl/CM609.m12b/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM609climpdcontrl/CM609.m1b/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM609climpdcontrl/CM609.m2b/MONITORING
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/LMDZOR/DEVT/CM609climpdcontrl/CM609.m3b/MONITORING

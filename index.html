@@ -255,7 +255,7 @@ $('#mytable').find("td").each(function(index, item) {
 
 $form = $('<form target="_blank" method="POST" action="http://webservices2017.ipsl.fr/interMonitoring_fromHermes/index.php">');
 $.each(simuls, function(k,v){
-    $form.append('<input type="text" name="' + k + '" value="' + v + '">');
+    $form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
 });
 $form.appendTo('body').submit();
 
