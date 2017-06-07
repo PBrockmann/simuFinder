@@ -244,6 +244,8 @@ function RemoveLastDirectoryPartOf(the_url)
 //=====================================================
 $('#run').on('click', function() {
 
+$(this).blur();
+
 simuls = {};
 $('#mytable').find("td").each(function(index, item) {
 	//console.log(index+1, $(item).text());
@@ -254,7 +256,7 @@ $('#mytable').find("td").each(function(index, item) {
 
 // https://stackoverflow.com/questions/178964/javascript-post-on-form-submit-open-a-new-window
 
-$form = $('<form target="_blank" method="POST" action="http://webservices2017.ipsl.fr/interMonitoring_fromHermes/index.php">');
+$form = $('<form target="_blank" method="POST" action="http://webservices2017.ipsl.fr/interMonitoring_prefilled/index.php">');
 $.each(simuls, function(k,v){
     $form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
 });

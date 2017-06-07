@@ -547,6 +547,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref3977
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref3977/FG3WFDEIv1
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref4067/FG3WFDEIv1.4067.flp
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref4067/FG3WFDEIv1.4067
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref4365/FG3WFDEIv1.4365.frz.dynroot
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref4365/FG3WFDEIv1.4365.frz
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86ghatt/OL2/PROD/ref4365/FG3WFDEIv1.4365
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM5A2/DEVT/pdControl/CPL01-5A2
