@@ -77,7 +77,7 @@ input = input.split('\n').filter(function(d){return d});
 function randomHSL() { return 'hsla(' + (Math.random() * 360) + ', 50%, 80%, 1)'; } 
 
 //=====================================================
-wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', ''];
+wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', 'work', 'public', ''];
 wordsFreqDict = {}; wordsColorDict= {};
 
 for (var i=0; i<input.length; i++) {
