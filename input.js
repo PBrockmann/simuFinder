@@ -1210,6 +1210,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24balk/IPSLCM6/PROD/piControl/H6
 https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24balk/IPSLCM6/PROD/piControl/H6k6AS-Sr01
 https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24balk/IPSLCM6/PROD/preind/Pi6AS-Sr02
 https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24balk/IPSLCM6/PROD/Preind/Pi6AS-Sr02
+https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24balk/LMDZORINCA/PROD/AER/pdCtrl2
 https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24balk/LMDZ/PROD/clim/MyTestRun2.4
 https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24cozic/LMDZORINCA/PROD/AER/LWnAaerV2b
 https://vesg.ipsl.upmc.fr/thredds/catalog/work/p24cozic/LMDZORINCA/PROD/AER/LWnAerV10

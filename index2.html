@@ -1,0 +1,398 @@
+<html>
+<head>
+
+<TITLE>Simu Finder</TITLE>
+<META NAME="author" CONTENT="Patrick Brockmann">
+<META HTTP-EQUIV="Content-Type" CONTENT ="text/html;charset=ISO-8859-1">
+<link rel="shortcut icon" href="target-48.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js"></script>
+
+<script src="input2.js"></script>
+
+<style type='text/css'>
+
+.container { width: 1400px; height: 800px;}
+
+html, body {
+ 	font-family: 'arial';
+ 	font-size: 14px;
+}
+#mychoice1 div {
+	display: inline-block;
+	vertical-align: top;
+}
+#counter, #addToCart, #clearCart, #trash, #runInterMonitoring {
+	margin-top: 20px;
+}
+#counter {
+	margin-top: 2px;
+	margin-left: 115px;
+}
+#mytags {
+	width: 400px;
+}
+.select2-container .select2-selection--multiple {
+	height: 200px;
+}
+.mytable {
+ 	font-size: 12px;
+	height: 200px;
+	overflow-y: auto;
+	display: block;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	margin-left: 20px;
+}
+.mytable td {
+	width: 900px;
+}
+.mytable tr:nth-child(odd){
+    	background: #eee;
+}
+.mytable a {
+    	margin-left: 5px;
+}
+.mytable {
+	width: 900px;
+}
+#mytable2 {
+	margin-left: 0px;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+#mychoice2 {
+	margin-top: 20px;
+}
+.close:focus, .close:hover {
+	opacity: 1.0 !important;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+
+//=====================================================
+// input is defined from input.js
+input = input.split('\n').filter(function(d){return d});
+
+//=====================================================
+function randomHSL() { return 'hsla(' + (Math.random() * 360) + ', 50%, 80%, 1)'; } 
+
+//=====================================================
+wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', 'work', 'public', ''];
+wordsFreqDict = {}; wordsColorDict= {};
+
+for (var i=0; i<input.length; i++) {
+    $('#mytable1').append('<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    words = input[i].split('/'); 
+    words.forEach(function(word) {
+	if (wordsToRemove.indexOf(word) >= 0) { return; }
+        if (!wordsFreqDict[word]) { wordsFreqDict[word] = 1; wordsColorDict[word] = '#' + randomHSL(); 
+        } else { wordsFreqDict[word] += 1; } 
+    });
+}
+$('#counter').html(input.length + ' simulations found');
+
+wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });	// create array from dict
+wordsFreq.sort(function(first, second) { return second[1] - first[1] ||  first[0].localeCompare(second[0]); });		// sort by value then alpha
+dataInit = [];
+for (var i=0; i<wordsFreq.length; i++) {
+	dataInit.push({id: wordsFreq[i][0], text: wordsFreq[i][0], freq: wordsFreq[i][1]});
+}
+
+wordsInit = Object.keys(wordsFreqDict).map(function(key) { return key; });
+//console.log(wordsInit);
+
+if (input.length <= 10) { $('#runInterMonitoring').prop('disabled', false); } else { $('#runInterMonitoring').prop('disabled', true); }
+
+//=====================================================
+$('#mytags').select2({
+	tags: true,
+  	multiple: true,
+  	placeholder: "Select or type a tag",
+  	data: dataInit,
+  	templateResult: function(d) {
+		if (! d.freq) {
+			d.freq = 0;
+			$('#mytable1').find("td").each(function(index, item) {
+				re = new RegExp(d.text, 'gi');
+				matches = $(item).text().match(re);
+				if (matches !== null) { d.freq++; }
+			});
+		}
+       		return d.text + ' (' + d.freq + ')';
+  	}, 
+  	templateSelection: function(d, container) {
+		if (! d.freq) {
+			d.freq = 0;
+			$('#mytable1').find("td").each(function(index, item) {
+				re = new RegExp(d.text, 'gi');
+				matches = $(item).text().match(re);
+				if (matches !== null) { d.freq++; }
+			});
+		}
+  		$(container).css({ "background-color": wordsColorDict[d.text] });	
+       		//return d.text + ' (' + d.freq + ')';
+       		return d.text;
+	}
+});
+
+//=====================================================
+$('#mytags').on('change', function(e) {
+	selectedData = $('#mytags').select2('data');
+	selectedTags = selectedData.map(function(d) {return d.text;});
+	//console.log(selectedData);
+	//console.log(selectedTags);
+	$('#mytable1').empty();
+
+	if (selectedTags.length == 0) {
+		for (var i=0; i<input.length; i++) {
+    			$('#mytable1').append('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+		}
+		dataCurrent = dataInit;
+		$('#counter').html(input.length + ' simulations found');
+	} else {
+		wordsFreqDict = {};
+		userTags = selectedTags.filter(function(tag) { return wordsInit.indexOf(tag) == -1;});
+		wordsTags = selectedTags.filter(function(tag) { return wordsInit.indexOf(tag) >= 0;});
+		//console.log(userTags, wordsTags);
+		selectedTags.forEach(function(tag) { wordsFreqDict[tag] = 0; });
+		
+		counter = 0;
+		for (var i=0; i<input.length; i++) {
+			words = input[i].split('/');
+			nbTagsFound = 0;
+			wordsTagsTmp = wordsTags.slice();
+			words.forEach(function(word) {
+				pos = wordsTagsTmp.indexOf(word);
+                	        if (pos >= 0) { nbTagsFound++; wordsTagsTmp.splice(pos, 1); }		// If found remove word to avoid false counting when duplicate words
+			});
+			//console.log(input[i], wordsTagsTmp, nbTagsFound);
+        	        userTags.forEach(function(tag) {
+				re = new RegExp(tag, 'gi');
+				matches = input[i].match(re);
+				if (matches !== null) { nbTagsFound++; }
+        	        });
+			if (nbTagsFound == selectedTags.length) {
+    				$('#mytable1').append('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+				counter++;
+    				words.forEach(function(word) {
+					if (wordsToRemove.indexOf(word) >= 0) { return; }
+        				if (!wordsFreqDict[word]) { wordsFreqDict[word] = 1;
+        				} else { wordsFreqDict[word] += 1; }
+    				});
+				userTags.forEach(function(tag) {
+					re = new RegExp(tag, 'gi');
+					matches = input[i].match(re);
+					if (matches !== null) { wordsFreqDict[tag] += 1; }
+        	        	});
+			}
+		}
+		$('#counter').html(counter + ' simulations found');
+	
+		wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });
+		wordsFreq.sort(function(first, second) { return second[1] - first[1] ||  first[0].localeCompare(second[0]); });		// sort by value then alpha
+		dataCurrent = [];
+		for (var i=0; i<wordsFreq.length; i++) {
+			dataCurrent.push({id: wordsFreq[i][0], text: wordsFreq[i][0], freq: wordsFreq[i][1]});
+		};
+		//console.log(dataCurrent);
+	}
+
+	$('#mytags').select2().empty();
+	$('#mytags').select2({
+  		tags: true,
+  		multiple: true,
+  		placeholder: "Select or type a tag",
+  		data: dataCurrent,
+  		templateResult: function(d) {
+			if (! d.freq) {
+				d.freq = 0;
+				$('#mytable1').find("td").each(function(index, item) {
+					re = new RegExp(d.text, 'gi');
+					matches = $(item).text().match(re);
+					if (matches !== null) { d.freq++; }
+				});
+			}
+        		return d.text + ' (' + d.freq + ')';
+  		}, 
+  		templateSelection: function(d, container) {
+			if (! d.freq) {
+				d.freq = 0;
+				$('#mytable1').find("td").each(function(index, item) {
+					re = new RegExp(d.text, 'gi');
+					matches = $(item).text().match(re);
+					if (matches !== null) { d.freq++; }
+				});
+			}
+  			$(container).css({ "background-color": wordsColorDict[d.text] });	
+       			//return d.text + ' (' + d.freq + ')';
+       			return d.text;
+  		}
+	});
+	$('#mytags').val(selectedTags).trigger('change.select2');		// https://github.com/select2/select2/issues/3620
+
+	$('#mytable1 tr').draggable({ helper: "clone" });
+});
+
+//=====================================================
+function RemoveLastDirectoryPartOf(the_url) {
+    var the_arr = the_url.split('/');
+    the_arr.pop();
+    return( the_arr.join('/') );
+}
+
+//=====================================================
+function updateStateButtonRun() {
+	counter = $('#mytable2 tr').length;
+	//console.log(counter);
+	if (counter > 0 && counter <= 10) { 
+		$('#runInterMonitoring').prop('disabled', false); 
+	} else { 
+		$('#runInterMonitoring').prop('disabled', true); 
+	}
+}
+
+//=====================================================
+function removeDuplicateCart() {
+
+	seen = {};
+	$('#mytable2 tr').each(function() {
+	    var txt = $(this).text();
+	    if (seen[txt])
+	        $(this).remove();
+	    else
+	        seen[txt] = true;
+	});
+
+}
+
+//=====================================================
+$('#addToCart').on('click', function() {
+
+	$(this).blur();
+	
+	$('#mytable1').find("td").each(function(index, item) {
+		//console.log(index+1, $(item).text());
+	        $('#mytable2').append('<tr class="simuSelection"><td><a href="' + $(item).text() + '/catalog.html" target="_blank">' + $(item).text() + '</a></td></tr>');
+	});
+
+	removeDuplicateCart();	
+	updateStateButtonRun();
+
+});
+
+//=====================================================
+$('#clearCart').on('click', function() {
+
+	$(this).blur();
+	$('#mytable2').empty();
+	
+	updateStateButtonRun();
+});
+
+//=====================================================
+$('#runInterMonitoring').on('click', function() {
+
+$(this).blur();
+simuls = {};
+$('#mytable2').find("td").each(function(index, item) {
+	//console.log(index+1, $(item).text());
+	simuls['simul'+ (index+1).toString()] = $(item).text();
+});
+
+//console.log(simuls);
+
+// https://stackoverflow.com/questions/178964/javascript-post-on-form-submit-open-a-new-window
+
+$form = $('<form target="_blank" method="POST" action="http://webservices2017.ipsl.fr/interMonitoring_prefilled/index.php">');
+$.each(simuls, function(k,v){
+    $form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
+});
+$form.appendTo('body').submit();
+
+});
+
+//=====================================================
+$('#mytable2').droppable({
+        drop: function(event, ui) {
+		simu = ui.draggable[0].textContent;   
+        	$('#mytable2').append('<tr class="simuSelection"><td><a href="' + simu + '/catalog.html" target="_blank">' + simu + '</a><img class="close" src="close.png"/></td></tr>');
+		removeDuplicateCart();	
+		updateStateButtonRun();
+        }
+});
+
+//=====================================================
+$('#trash').droppable({
+	accept: '.simuSelection',
+	tolerance: 'pointer',
+        drop: function(event, ui) {
+		simu = ui.draggable[0].textContent;
+		ui.draggable.remove();
+		// https://stackoverflow.com/questions/44424187/why-when-a-draggable-element-is-removed-i-get-a-wrong-count
+		setTimeout(function(){ updateStateButtonRun(); }, 0);	
+        }
+});
+
+//=====================================================
+$('#mytable1 tr').draggable({ helper: "clone" });
+
+//=====================================================
+$('#mytable2').sortable();
+$('#mytable2 tr').draggable({ helper: "original" });
+
+});
+</script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">Simu Finder - 2017/06/07</div>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div id="mychoice1">
+	<div><select id="mytags"></select></div>
+	<div><table class="mytable" id="mytable1" title="This list is updated every 3 hours"></table></div>
+  	<button type="button" class="btn btn-default" id="addToCart">Add selection to cart</button>
+  	<button type="button" class="btn btn-default" id="clearCart">Clear cart</button>
+  	<button type="button" class="btn btn-default" id="trash">Trash</button>
+  	<div id="counter"></div> 
+  </div>
+
+
+  <div id="mychoice2">
+	<div><table class="mytable" id="mytable2" title="This is your simulations cart"></table></div>
+  </div>
+
+  <button type="button" class="btn btn-default" id="runInterMonitoring" title="Only when <= 10 simulations" disabled="disabled">Run Inter-Monitoring</button>
+
+
+
+</div>
+
+</body>
+</html>
