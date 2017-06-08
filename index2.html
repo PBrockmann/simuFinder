@@ -31,12 +31,12 @@ html, body {
 	display: inline-block;
 	vertical-align: top;
 }
-#counter, #addToCart, #clearCart, #trash, #runInterMonitoring {
+#counter, #addToCart, #clearCart, #runInterMonitoring {
 	margin-top: 20px;
 }
 #counter {
 	margin-top: 2px;
-	margin-left: 115px;
+	margin-left: 180px;
 }
 #mytags {
 	width: 400px;
@@ -286,7 +286,8 @@ $('#addToCart').on('click', function() {
 	
 	$('#mytable1').find("td").each(function(index, item) {
 		//console.log(index+1, $(item).text());
-	        $('#mytable2').append('<tr class="simuSelection"><td><a href="' + $(item).text() + '/catalog.html" target="_blank">' + $(item).text() + '</a></td></tr>');
+	        $('#mytable2').append('<tr class="simuSelection"><td><a href="' + $(item).text() + '/catalog.html" target="_blank">' + $(item).text() +
+						'</a><img class="close" src="close.png"/></td></tr>');
 	});
 
 	removeDuplicateCart();	
@@ -329,21 +330,10 @@ $form.appendTo('body').submit();
 $('#mytable2').droppable({
         drop: function(event, ui) {
 		simu = ui.draggable[0].textContent;   
-        	$('#mytable2').append('<tr class="simuSelection"><td><a href="' + simu + '/catalog.html" target="_blank">' + simu + '</a><img class="close" src="close.png"/></td></tr>');
+        	$('#mytable2').append('<tr class="simuSelection"><td><a href="' + simu + '/catalog.html" target="_blank">' + simu +
+						'</a><img class="close" src="close.png"/></td></tr>');
 		removeDuplicateCart();	
 		updateStateButtonRun();
-        }
-});
-
-//=====================================================
-$('#trash').droppable({
-	accept: '.simuSelection',
-	tolerance: 'pointer',
-        drop: function(event, ui) {
-		simu = ui.draggable[0].textContent;
-		ui.draggable.remove();
-		// https://stackoverflow.com/questions/44424187/why-when-a-draggable-element-is-removed-i-get-a-wrong-count
-		setTimeout(function(){ updateStateButtonRun(); }, 0);	
         }
 });
 
@@ -352,8 +342,15 @@ $('#mytable1 tr').draggable({ helper: "clone" });
 
 //=====================================================
 $('#mytable2').sortable();
-$('#mytable2 tr').draggable({ helper: "original" });
 
+//=====================================================
+$(document).on('click', '.close', function() {
+	row = $(this).parent().parent();
+	row.remove();
+	updateStateButtonRun();
+});
+
+//=====================================================
 });
 </script>
 
@@ -365,7 +362,7 @@ $('#mytable2 tr').draggable({ helper: "original" });
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">Simu Finder - 2017/06/07</div>
+      <div class="navbar-brand">Simu Finder - 2017/06/09</div>
     </div>
     <ul class="nav navbar-nav">
     </ul>
@@ -379,7 +376,6 @@ $('#mytable2 tr').draggable({ helper: "original" });
 	<div><table class="mytable" id="mytable1" title="This list is updated every 3 hours"></table></div>
   	<button type="button" class="btn btn-default" id="addToCart">Add selection to cart</button>
   	<button type="button" class="btn btn-default" id="clearCart">Clear cart</button>
-  	<button type="button" class="btn btn-default" id="trash">Trash</button>
   	<div id="counter"></div> 
   </div>
 
@@ -388,7 +384,7 @@ $('#mytable2 tr').draggable({ helper: "original" });
 	<div><table class="mytable" id="mytable2" title="This is your simulations cart"></table></div>
   </div>
 
-  <button type="button" class="btn btn-default" id="runInterMonitoring" title="Only when <= 10 simulations" disabled="disabled">Run Inter-Monitoring</button>
+  <button type="button" class="btn btn-default" id="runInterMonitoring" title="Possible when <= 10 simulations" disabled="disabled">Run Inter-Monitoring</button>
 
 
 
