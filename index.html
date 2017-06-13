@@ -6,16 +6,16 @@
 <META HTTP-EQUIV="Content-Type" CONTENT ="text/html;charset=ISO-8859-1">
 <link rel="shortcut icon" href="target-48.png">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="lib/jquery.min.js"></script>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="lib/bootstrap.min.css" rel="stylesheet"/>
+<script src="lib/bootstrap.min.js"></script>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link href="lib/jquery-ui.min.css" rel="stylesheet"/>
+<script src="lib/jquery-ui.min.js"></script>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js"></script>
+<link href="lib/select2.min.css" rel="stylesheet"/>
+<script src="lib/select2.min.js"></script>
 
 <script src="input.js"></script>
 
@@ -95,8 +95,9 @@ function randomHSL() { return 'hsla(' + (Math.random() * 360) + ', 50%, 80%, 1)'
 wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', 'work', 'public', ''];
 wordsFreqDict = {}; wordsColorDict= {};
 
+rowsHTML='';
 for (var i=0; i<input.length; i++) {
-    $('#mytable1').append('<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    rowsHTML += '<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>';
     words = input[i].split('/'); 
     words.forEach(function(word) {
 	if (wordsToRemove.indexOf(word) >= 0) { return; }
@@ -104,6 +105,7 @@ for (var i=0; i<input.length; i++) {
         } else { wordsFreqDict[word] += 1; } 
     });
 }
+$('#mytable1').html(rowsHTML);
 $('#counter').html(input.length + ' simulations found');
 
 wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });	// create array from dict
