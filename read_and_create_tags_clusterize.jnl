@@ -1,0 +1,212 @@
+<html>
+<head>
+
+<TITLE>Simu Finder</TITLE>
+<META NAME="author" CONTENT="Patrick Brockmann">
+<META HTTP-EQUIV="Content-Type" CONTENT ="text/html;charset=ISO-8859-1">
+<link rel="shortcut icon" href="target-48.png">
+
+<script src="lib/jquery.min.js"></script>
+
+<link href="lib/bootstrap.min.css" rel="stylesheet"/>
+<script src="lib/bootstrap.min.js"></script>
+
+<link href="lib/jquery-ui.min.css" rel="stylesheet"/>
+<script src="lib/jquery-ui.min.js"></script>
+
+<link href="lib/select2.min.css" rel="stylesheet"/>
+<script src="lib/select2.min.js"></script>
+
+<link href="lib/clusterize.min.css" rel="stylesheet"/>
+<script src="lib/clusterize.min.js"></script>
+
+<style type='text/css'>
+
+.container { width: 1400px; height: 800px;}
+
+html, body {
+ 	font-family: 'arial';
+ 	font-size: 14px;
+}
+#mychoice1 div {
+	display: inline-block;
+	vertical-align: top;
+}
+#counter, #addToCart, #clearCart, #runInterMonitoring {
+	margin-top: 20px;
+}
+#counter {
+	margin-top: 2px;
+	margin-left: 180px;
+	font-style: italic;
+}
+#mytags {
+	width: 400px;
+}
+.select2-container .select2-selection--multiple {
+	height: 200px;
+}
+.clusterize-scroll {
+        height: 200px;
+        width: 900px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        margin-left: 20px;
+}
+.mytable {
+ 	font-size: 12px;
+}
+.mytable td {
+	width: 900px;
+}
+.mytable tr:nth-child(odd){
+    	background: #eee;
+}
+.mytable a {
+    	margin-left: 5px;
+}
+.mytable {
+	width: 900px;
+}
+#mytable2 {
+	margin-left: 0px;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+#mychoice2 {
+	margin-top: 20px;
+}
+.close:focus, .close:hover {
+	opacity: 1.0 !important;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+
+//=====================================================
+$.ajax({
+    url: 'list.txt',
+    dataType: "text",
+    async: false, 
+    success: function(data){
+        input = data;
+    }
+});
+
+//=====================================================
+// input is defined from input.js
+input = input.split('\n').filter(function(d){return d});
+
+//=====================================================
+function randomHSL() { return 'hsla(' + (Math.random() * 360) + ', 50%, 80%, 1)'; } 
+
+//=====================================================
+wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', 'work', 'public', ''];
+wordsFreqDict = {}; wordsColorDict= {};
+
+rowsHTML=[];
+for (var i=0; i<input.length; i++) {
+    rowsHTML.push('<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    words = input[i].split('/'); 
+    words.forEach(function(word) {
+	if (wordsToRemove.indexOf(word) >= 0) { return; }
+        if (!wordsFreqDict[word]) { wordsFreqDict[word] = 1; wordsColorDict[word] = '#' + randomHSL(); 
+        } else { wordsFreqDict[word] += 1; } 
+    });
+}
+
+var clusterize = new Clusterize({
+  rows: rowsHTML,
+  scrollId: 'scrollArea',
+  contentId: 'contentArea'
+});
+
+$('#counter').html(input.length + ' simulations found');
+
+wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });	// create array from dict
+wordsFreq.sort(function(first, second) { return second[1] - first[1] ||  first[0].localeCompare(second[0]); });		// sort by value then alpha
+dataInit = [];
+for (var i=0; i<wordsFreq.length; i++) {
+	dataInit.push({id: wordsFreq[i][0], text: wordsFreq[i][0], freq: wordsFreq[i][1]});
+}
+
+wordsInit = Object.keys(wordsFreqDict).map(function(key) { return key; });
+//console.log(wordsInit);
+
+//=====================================================
+$('#mytags').select2({
+	tags: true,
+  	multiple: true,
+  	placeholder: "Select or type a tag",
+  	data: dataInit,
+  	templateResult: function(d) {
+		if (! d.freq) {
+			d.freq = 0;
+			$('#mytable1').find("td").each(function(index, item) {
+				re = new RegExp(d.text, 'gi');
+				matches = $(item).text().match(re);
+				if (matches !== null) { d.freq++; }
+			});
+		}
+       		return d.text + ' (' + d.freq + ')';
+  	}, 
+  	templateSelection: function(d, container) {
+		if (! d.freq) {
+			d.freq = 0;
+			$('#mytable1').find("td").each(function(index, item) {
+				re = new RegExp(d.text, 'gi');
+				matches = $(item).text().match(re);
+				if (matches !== null) { d.freq++; }
+			});
+		}
+  		$(container).css({ "background-color": wordsColorDict[d.text] });	
+       		//return d.text + ' (' + d.freq + ')';
+       		return d.text;
+	}
+});
+
+//=====================================================
+});
+</script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">Simu Finder - 2017/06/09</div>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div id="mychoice1">
+	<div><select id="mytags"></select></div>
+
+        <div id="scrollArea" class="clusterize-scroll">
+                <table class="mytable" id="mytable1" title="This list is updated every 3 hours">
+                        <tbody id="contentArea" class="clusterize-content">
+                                <tr class="clusterize-no-data">
+                                        <td>Loading simulations</td>
+                                </tr>
+                        </tbody>
+                </table>
+        </div>
+
+  	<div id="counter"></div> 
+  </div>
+
+
+</div>
+
+</body>
+</html>

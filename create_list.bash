@@ -2,9 +2,6 @@
 
 
 #------------------------------------------------------------------
-echo 'var input = `'
-
-#------------------------------------------------------------------
 server='https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds'
 
 # DRS with 4 levels after login
@@ -44,4 +41,3 @@ for dir in `ls -d1 /ccc/work/cont003/dods/public/*/*/*/*/*/MONITORING`; do
 done
 
 #------------------------------------------------------------------
-echo '`;'

@@ -6,7 +6,7 @@
 <META HTTP-EQUIV="Content-Type" CONTENT ="text/html;charset=ISO-8859-1">
 <link rel="shortcut icon" href="target-48.png">
 
-<script src="lib/jquery.min.js"></script>
+<script src="lib/jquery.js"></script>
 
 <link href="lib/bootstrap.min.css" rel="stylesheet"/>
 <script src="lib/bootstrap.min.js"></script>
@@ -17,7 +17,8 @@
 <link href="lib/select2.min.css" rel="stylesheet"/>
 <script src="lib/select2.min.js"></script>
 
-<script src="input.js"></script>
+<link href="lib/clusterize.min.css" rel="stylesheet"/>
+<script src="lib/clusterize.min.js"></script>
 
 <style type='text/css'>
 
@@ -45,14 +46,16 @@ html, body {
 .select2-container .select2-selection--multiple {
 	height: 200px;
 }
-.mytable {
- 	font-size: 12px;
+.clusterize-scroll {
 	height: 200px;
-	overflow-y: auto;
-	display: block;
+	width: 900px;
 	border: 1px solid #aaa;
 	border-radius: 4px;
 	margin-left: 20px;
+	overflow-x: hidden;
+}
+.mytable {
+ 	font-size: 12px;
 }
 .mytable td {
 	width: 900px;
@@ -67,7 +70,14 @@ html, body {
 	width: 900px;
 }
 #mytable2 {
-	margin-left: 0px;
+	height: 200px;
+	width: 900px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+        overflow-y: auto;
+        display: block;
+        margin-left: 0px;
+
 }
 a {
 	color: #000;
@@ -85,6 +95,16 @@ a {
 $(document).ready(function() { 
 
 //=====================================================
+$.ajax({
+    url: 'list.txt',
+    dataType: "text",
+    async: false, 
+    success: function(data){
+        input = data;
+    }
+});
+
+//=====================================================
 // input is defined from input.js
 input = input.split('\n').filter(function(d){return d});
 
@@ -95,17 +115,23 @@ function randomHSL() { return 'hsla(' + (Math.random() * 360) + ', 50%, 80%, 1)'
 wordsToRemove = ['http:', 'https:', 'esgf.extra.cea.fr', 'vesg.ipsl.upmc.fr', 'catalog', 'ccc', 'work', 'thredds', 'work_thredds', 'cont003', 'work', 'public', ''];
 wordsFreqDict = {}; wordsColorDict= {};
 
-rowsHTML='';
+rowsHTML=[];
 for (var i=0; i<input.length; i++) {
-    rowsHTML += '<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>';
+    rowsHTML.push('<tr><td><a href="' + input[i] + '/MONITORING/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
     words = input[i].split('/'); 
     words.forEach(function(word) {
-	if (wordsToRemove.indexOf(word) >= 0) { return; }
+        if (wordsToRemove.indexOf(word) >= 0) { return; }
         if (!wordsFreqDict[word]) { wordsFreqDict[word] = 1; wordsColorDict[word] = '#' + randomHSL(); 
         } else { wordsFreqDict[word] += 1; } 
     });
 }
-$('#mytable1').html(rowsHTML);
+
+var clusterize = new Clusterize({
+  rows: rowsHTML,
+  scrollId: 'scrollArea',
+  contentId: 'contentArea'
+});
+
 $('#counter').html(input.length + ' simulations found');
 
 wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });	// create array from dict
@@ -158,13 +184,15 @@ $('#mytags').on('change', function(e) {
 	selectedTags = selectedData.map(function(d) {return d.text;});
 	//console.log(selectedData);
 	//console.log(selectedTags);
-	$('#mytable1').empty();
+	clusterize.clear();
 
 	if (selectedTags.length == 0) {
+		rowsHTML=[];
 		for (var i=0; i<input.length; i++) {
-    			$('#mytable1').append('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    			rowsHTML.push('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
 		}
 		dataCurrent = dataInit;
+		clusterize.update(rowsHTML);
 		$('#counter').html(input.length + ' simulations found');
 	} else {
 		wordsFreqDict = {};
@@ -174,6 +202,7 @@ $('#mytags').on('change', function(e) {
 		selectedTags.forEach(function(tag) { wordsFreqDict[tag] = 0; });
 		
 		counter = 0;
+		rowsHTML=[];
 		for (var i=0; i<input.length; i++) {
 			words = input[i].split('/');
 			nbTagsFound = 0;
@@ -189,7 +218,7 @@ $('#mytags').on('change', function(e) {
 				if (matches !== null) { nbTagsFound++; }
         	        });
 			if (nbTagsFound == selectedTags.length) {
-    				$('#mytable1').append('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    				rowsHTML.push('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
 				counter++;
     				words.forEach(function(word) {
 					if (wordsToRemove.indexOf(word) >= 0) { return; }
@@ -203,6 +232,7 @@ $('#mytags').on('change', function(e) {
         	        	});
 			}
 		}
+		clusterize.update(rowsHTML);
 		$('#counter').html(counter + ' simulations found');
 	
 		wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });
@@ -365,7 +395,7 @@ $(document).on('click', '.close', function() {
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">Simu Finder - 2017/06/09</div>
+      <div class="navbar-brand">Simu Finder - 2017/06/15</div>
     </div>
     <ul class="nav navbar-nav">
     </ul>
@@ -376,7 +406,17 @@ $(document).on('click', '.close', function() {
 
   <div id="mychoice1">
 	<div><select id="mytags"></select></div>
-	<div><table class="mytable" id="mytable1" title="This list is updated every 3 hours"></table></div>
+
+	<div id="scrollArea" class="clusterize-scroll">
+    		<table class="mytable" id="mytable1" title="This list is updated every 3 hours">
+      			<tbody id="contentArea" class="clusterize-content">
+        			<tr class="clusterize-no-data">
+          				<td>Loading simulations</td>
+        			</tr>
+      			</tbody>
+    		</table>
+  	</div>
+
   	<button type="button" class="btn btn-default" id="addToCart">Add selection to cart</button>
   	<button type="button" class="btn btn-default" id="clearCart">Clear cart</button>
   	<div id="counter"></div> 
