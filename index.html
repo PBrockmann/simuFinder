@@ -32,7 +32,7 @@ html, body {
 	display: inline-block;
 	vertical-align: top;
 }
-#counter, #addToCart, #clearCart, #runInterMonitoring {
+#counter, #addToCart, #clearCart, #runInterMonitoring, #runExecutionAnalysis {
 	margin-top: 20px;
 }
 #counter {
@@ -144,7 +144,9 @@ for (var i=0; i<wordsFreq.length; i++) {
 wordsInit = Object.keys(wordsFreqDict).map(function(key) { return key; });
 //console.log(wordsInit);
 
-if (input.length <= 10) { $('#runInterMonitoring').prop('disabled', false); } else { $('#runInterMonitoring').prop('disabled', true); }
+if (input.length > 0 && input.length <= 10) { $('#runInterMonitoring').prop('disabled', false); } else { $('#runInterMonitoring').prop('disabled', true); }
+//if (input.length > 0 && input.length <= 50) { $('#runExecutionAnalysis').prop('disabled', false); } else { $('#runExecutionAnalysis').prop('disabled', true); }
+if (input.length <= 50) { $('#runExecutionAnalysis').prop('disabled', false); } else { $('#runExecutionAnalysis').prop('disabled', true); }
 
 //=====================================================
 $('#mytags').select2({
@@ -296,6 +298,11 @@ function updateStateButtonRun() {
 	} else { 
 		$('#runInterMonitoring').prop('disabled', true); 
 	}
+	if (counter > 0 && counter <= 50) { 
+		$('#runExecutionAnalysis').prop('disabled', false); 
+	} else { 
+		$('#runExecutionAnalysis').prop('disabled', true); 
+	}
 }
 
 //=====================================================
@@ -352,6 +359,28 @@ $('#mytable2').find("td").each(function(index, item) {
 // https://stackoverflow.com/questions/178964/javascript-post-on-form-submit-open-a-new-window
 
 $form = $('<form target="_blank" method="POST" action="http://webservices2017.ipsl.fr/interMonitoring_prefilled/index.php">');
+$.each(simuls, function(k,v){
+    $form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
+});
+$form.appendTo('body').submit();
+
+});
+
+//=====================================================
+$('#runExecutionAnalysis').on('click', function() {
+
+$(this).blur();
+simuls = {};
+$('#mytable2').find("td").each(function(index, item) {
+	//console.log(index+1, $(item).text());
+	simuls['simul'+ (index+1).toString()] = $(item).text();
+});
+
+//console.log(simuls);
+
+// https://stackoverflow.com/questions/178964/javascript-post-on-form-submit-open-a-new-window
+
+$form = $('<form target="_blank" method="POST" action="runExecutionAnalysis.php">');
 $.each(simuls, function(k,v){
     $form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
 });
@@ -429,6 +458,7 @@ $(document).on('click', '.close', function() {
 
   <button type="button" class="btn btn-default" id="runInterMonitoring" title="Possible when <= 10 simulations" disabled="disabled">Run Inter-Monitoring</button>
 
+  <button type="button" class="btn btn-default" id="runExecutionAnalysis" title="Possible when <= 50 simulations" disabled="disabled">Run Execution Analysis</button>
 
 
 </div>
