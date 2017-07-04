@@ -32,12 +32,17 @@ html, body {
 	display: inline-block;
 	vertical-align: top;
 }
-#counter, #addToCart, #clearCart, #runInterMonitoring, #runExecutionAnalysis {
+#counter1, #counter2, #addToCart, #clearCart, #runInterMonitoring, #runExecutionAnalysis {
 	margin-top: 20px;
 }
-#counter {
+#counter1 {
 	margin-top: 2px;
 	margin-left: 180px;
+	font-style: italic;
+}
+#counter2 {
+	margin-top: 2px;
+	margin-left: 15px;
 	font-style: italic;
 }
 #mytags {
@@ -132,7 +137,7 @@ var clusterize = new Clusterize({
   contentId: 'contentArea'
 });
 
-$('#counter').html(input.length + ' simulations found');
+$('#counter1').html(input.length + ' simulations found');
 
 wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });	// create array from dict
 wordsFreq.sort(function(first, second) { return second[1] - first[1] ||  first[0].localeCompare(second[0]); });		// sort by value then alpha
@@ -194,7 +199,7 @@ $('#mytags').on('change', function(e) {
 		}
 		dataCurrent = dataInit;
 		clusterize.update(rowsHTML);
-		$('#counter').html(input.length + ' simulations found');
+		$('#counter1').html(input.length + ' simulations found');
 	} else {
 		wordsFreqDict = {};
 		userTags = selectedTags.filter(function(tag) { return wordsInit.indexOf(tag) == -1;});
@@ -234,7 +239,7 @@ $('#mytags').on('change', function(e) {
 			}
 		}
 		clusterize.update(rowsHTML);
-		$('#counter').html(counter + ' simulations found');
+		$('#counter1').html(counter + ' simulations found');
 	
 		wordsFreq = Object.keys(wordsFreqDict).map(function(key) { return [key, wordsFreqDict[key]]; });
 		wordsFreq.sort(function(first, second) { return second[1] - first[1] ||  first[0].localeCompare(second[0]); });		// sort by value then alpha
@@ -290,6 +295,7 @@ function RemoveLastDirectoryPartOf(the_url) {
 
 //=====================================================
 function updateStateButtonRun() {
+
 	counter = $('#mytable2 tr').length;
 	//console.log(counter);
 	if (counter > 0 && counter <= 10) { 
@@ -302,6 +308,8 @@ function updateStateButtonRun() {
 	} else { 
 		$('#runExecutionAnalysis').prop('disabled', true); 
 	}
+	$('#counter2').html(counter + ' simulations selected');
+
 }
 
 //=====================================================
@@ -341,6 +349,7 @@ $('#clearCart').on('click', function() {
 	$('#mytable2').empty();
 	
 	updateStateButtonRun();
+
 });
 
 //=====================================================
@@ -423,7 +432,7 @@ $(document).on('click', '.close', function() {
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">Simu Finder - 2017/06/15</div>
+      <div class="navbar-brand">Simu Finder - 2017/07/05</div>
     </div>
     <ul class="nav navbar-nav">
     </ul>
@@ -447,12 +456,13 @@ $(document).on('click', '.close', function() {
 
   	<button type="button" class="btn btn-default" id="addToCart">Add selection to cart</button>
   	<button type="button" class="btn btn-default" id="clearCart">Clear cart</button>
-  	<div id="counter"></div> 
+  	<div id="counter1"></div> 
   </div>
 
 
   <div id="mychoice2">
 	<div><table class="mytable" id="mytable2"></table></div>
+  	<div id="counter2">0 simulations selected</div> 
   </div>
 
   <button type="button" class="btn btn-default" id="runInterMonitoring" title="Possible when <= 10 simulations" disabled="disabled">Run Inter-Monitoring</button>
