@@ -489,6 +489,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdCo
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011.0-pdCtrl-epwb-01
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011.0-pdCtrl-fallc-01
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011.1-LR-pdCtrl-01
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011.1-LR-pdCtrl-blcvJ-01
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011pre-LR-pdCtrl-fallv-01
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011pre-LR-pdCtrl-fallv-02
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86fair/IPSLCM6/DEVT/pdControl/CM6011pre-LR-pdCtrl-fallv
