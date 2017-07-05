@@ -216,6 +216,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.cruncep.vegconst
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.cruncep.vegupdate
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.wfdei.ar5.spinup
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.wfdei.ar5.vegupdate
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.wfdei.spinup
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.wfdei.vegconst
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p529bast/OL2/PROD/ref3977/ESA3.wfdei.vegupdate

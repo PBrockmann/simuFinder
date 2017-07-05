@@ -150,7 +150,7 @@ wordsInit = Object.keys(wordsFreqDict).map(function(key) { return key; });
 //console.log(wordsInit);
 
 if (input.length > 0 && input.length <= 10) { $('#runInterMonitoring').prop('disabled', false); } else { $('#runInterMonitoring').prop('disabled', true); }
-if (input.length > 0 && input.length <= 100) { $('#runExecutionAnalysis').prop('disabled', false); } else { $('#runExecutionAnalysis').prop('disabled', true); }
+if (input.length > 0 && input.length <= 200) { $('#runExecutionAnalysis').prop('disabled', false); } else { $('#runExecutionAnalysis').prop('disabled', true); }
 
 //=====================================================
 $('#mytags').select2({
@@ -303,7 +303,7 @@ function updateStateButtonRun() {
 	} else { 
 		$('#runInterMonitoring').prop('disabled', true); 
 	}
-	if (counter > 0 && counter <= 100) { 
+	if (counter > 0 && counter <= 200) { 
 		$('#runExecutionAnalysis').prop('disabled', false); 
 	} else { 
 		$('#runExecutionAnalysis').prop('disabled', true); 
@@ -467,7 +467,7 @@ $(document).on('click', '.close', function() {
 
   <button type="button" class="btn btn-default" id="runInterMonitoring" title="Possible when <= 10 simulations" disabled="disabled">Run Inter-Monitoring</button>
 
-  <button type="button" class="btn btn-default" id="runExecutionAnalysis" title="Possible when <= 100 simulations" disabled="disabled">Run Execution Analysis</button>
+  <button type="button" class="btn btn-default" id="runExecutionAnalysis" title="Possible when <= 200 simulations" disabled="disabled">Run Execution Analysis</button>
 
 
 </div>
