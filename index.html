@@ -388,7 +388,7 @@ $('#mytable2').find("td").each(function(index, item) {
 
 // https://stackoverflow.com/questions/178964/javascript-post-on-form-submit-open-a-new-window
 
-$form = $('<form target="_blank" method="POST" action="runExecutionAnalysis.php">');
+$form = $('<form target="_blank" method="POST" action="processing.php">');
 $.each(simuls, function(k,v){
     $form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
 });
