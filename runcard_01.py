@@ -15,7 +15,7 @@ import urllib2
 
 import bokeh.plotting as bk
 from bokeh.plotting import figure, output_file, show, save, ColumnDataSource
-from bokeh.models import DatetimeTickFormatter
+from bokeh.models import DatetimeTickFormatter, OpenURL, TapTool
 from bokeh.models import HoverTool, BoxAnnotation, Span, Label, WheelZoomTool
 from bokeh.palettes import Set1_8, Set2_8
 from bokeh.models import Range1d
@@ -32,7 +32,7 @@ print(rand_color.generate())
 
 simuList = sys.argv[1]
 
-tools1 = ["pan,resize,wheel_zoom,crosshair,hover,reset,save"]
+tools1 = ["pan,resize,wheel_zoom,crosshair,hover,tap,reset,save"]
 
 plot1 = figure(plot_width=1000, plot_height=600, x_axis_type="datetime", y_axis_type="datetime",
                 min_border=10, tools=tools1, active_scroll="wheel_zoom", active_inspect="hover")
@@ -110,6 +110,10 @@ for line in finput :
 hover = plot1.select(dict(type=HoverTool))
 hover.tooltips = [("Simulation", "@simuName")]
 hover.mode = 'mouse'
+
+url = "https://vesg.ipsl.upmc.fr/thredds/fileServer/work_thredds/@simuName/MONITORING/index.html"
+taptool = plot1.select(type=TapTool)
+taptool.callback = OpenURL(url=url)
 
 plot1.title.text = "run.card analysis"
 plot1.title.align = 'center'
