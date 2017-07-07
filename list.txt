@@ -55,6 +55,7 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LM
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010eprqh
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010epwb
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010fallvc
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010J
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010OrotkeA
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/aidel/LMDZOR/DEVT/clim/LMDZORv6010OrotkeC
@@ -663,6 +664,8 @@ https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdCon
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TNO9-1M
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TNO9-1Y
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6010.2R-LR-pdCtrl-TNOO-1Y
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6.0.11-pd-01-1M
+https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM6.0.11-pd-01-1Y
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM605.NOSU-LR-pdCtrl-01
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM605.NOSU-LR-pdCtrl-02
 https://vesg.ipsl.upmc.fr/thredds/catalog/work_thredds/p86maf/IPSLCM6/DEVT/pdControl/CM605.NOSU-LR-pdCtrl-03

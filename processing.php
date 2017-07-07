@@ -14,8 +14,10 @@ html {
 }
 #loading {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
+  margin-top: -100px;
+  margin-left: -60px;
 }
 #mesg {
   width: 120px;
