@@ -99,6 +99,7 @@ for line in finput :
                                                 ))
             
             plot1.line('x', 'y', source=source, line_alpha=1.0, line_join="round", line_color=color, line_width=3)
+            #plot1.circle('x', 'y', source=source, alpha=0.2, color="#000000", size=3)
             
             nbfiles=nbfiles+1
                 
