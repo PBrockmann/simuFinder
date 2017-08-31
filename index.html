@@ -161,9 +161,11 @@ $('#mytags').select2({
   	templateResult: function(d) {
 		if (! d.freq) {
 			d.freq = 0;
-			$('#mytable1').find("td").each(function(index, item) {
+			//$('#mytable1').find("td").each(function(index, item) {
+			input.forEach(function(item) {
 				re = new RegExp(d.text, 'gi');
-				matches = $(item).text().match(re);
+				//matches = $(item).text().match(re);
+				matches = item.match(re);
 				if (matches !== null) { d.freq++; }
 			});
 		}
@@ -172,9 +174,11 @@ $('#mytags').select2({
   	templateSelection: function(d, container) {
 		if (! d.freq) {
 			d.freq = 0;
-			$('#mytable1').find("td").each(function(index, item) {
+			//$('#mytable1').find("td").each(function(index, item) {
+			input.forEach(function(item) {
 				re = new RegExp(d.text, 'gi');
-				matches = $(item).text().match(re);
+				//matches = $(item).text().match(re);
+				matches = item.match(re);
 				if (matches !== null) { d.freq++; }
 			});
 		}
@@ -192,10 +196,12 @@ $('#mytags').on('change', function(e) {
 	//console.log(selectedTags);
 	clusterize.clear();
 
+	inputSelected=[]
 	if (selectedTags.length == 0) {
 		rowsHTML=[];
 		for (var i=0; i<input.length; i++) {
     			rowsHTML.push('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    			inputSelected.push(input[i]);
 		}
 		dataCurrent = dataInit;
 		clusterize.update(rowsHTML);
@@ -225,6 +231,7 @@ $('#mytags').on('change', function(e) {
         	        });
 			if (nbTagsFound == selectedTags.length) {
     				rowsHTML.push('<tr><td><a href="' + input[i] + '/catalog.html" target="_blank">' + input[i] + '</a></td></tr>');
+    				inputSelected.push(input[i]);
 				counter++;
     				words.forEach(function(word) {
 					if (wordsToRemove.indexOf(word) >= 0) { return; }
@@ -259,9 +266,9 @@ $('#mytags').on('change', function(e) {
   		templateResult: function(d) {
 			if (! d.freq) {
 				d.freq = 0;
-				$('#mytable1').find("td").each(function(index, item) {
+				inputSelected.forEach(function(item) {
 					re = new RegExp(d.text, 'gi');
-					matches = $(item).text().match(re);
+					matches = item.match(re);
 					if (matches !== null) { d.freq++; }
 				});
 			}
@@ -270,9 +277,9 @@ $('#mytags').on('change', function(e) {
   		templateSelection: function(d, container) {
 			if (! d.freq) {
 				d.freq = 0;
-				$('#mytable1').find("td").each(function(index, item) {
+				inputSelected.forEach(function(item) {
 					re = new RegExp(d.text, 'gi');
-					matches = $(item).text().match(re);
+					matches = item.match(re);
 					if (matches !== null) { d.freq++; }
 				});
 			}
@@ -432,7 +439,7 @@ $(document).on('click', '.close', function() {
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">Simu Finder - 2017/07/06</div>
+      <div class="navbar-brand">Simu Finder - 2017/08/31</div>
     </div>
     <ul class="nav navbar-nav">
     </ul>
