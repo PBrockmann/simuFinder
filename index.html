@@ -150,7 +150,7 @@ wordsInit = Object.keys(wordsFreqDict).map(function(key) { return key; });
 //console.log(wordsInit);
 
 if (input.length > 0 && input.length <= 15) { $('#runInterMonitoring').prop('disabled', false); } else { $('#runInterMonitoring').prop('disabled', true); }
-if (input.length > 0 && input.length <= 200) { $('#runExecutionAnalysis').prop('disabled', false); } else { $('#runExecutionAnalysis').prop('disabled', true); }
+if (input.length > 0 && input.length <= 300) { $('#runExecutionAnalysis').prop('disabled', false); } else { $('#runExecutionAnalysis').prop('disabled', true); }
 
 //=====================================================
 $('#mytags').select2({
@@ -189,6 +189,8 @@ $('#mytags').select2({
 });
 
 //=====================================================
+var inputSelected=[];
+
 $('#mytags').on('change', function(e) {
 	selectedData = $('#mytags').select2('data');
 	selectedTags = selectedData.map(function(d) {return d.text;});
@@ -310,7 +312,7 @@ function updateStateButtonRun() {
 	} else { 
 		$('#runInterMonitoring').prop('disabled', true); 
 	}
-	if (counter > 0 && counter <= 200) { 
+	if (counter > 0 && counter <= 300) { 
 		$('#runExecutionAnalysis').prop('disabled', false); 
 	} else { 
 		$('#runExecutionAnalysis').prop('disabled', true); 
@@ -338,15 +340,15 @@ $('#addToCart').on('click', function() {
 
 	$(this).blur();
 	
-	$('#mytable1').find("td").each(function(index, item) {
-		//console.log(index+1, $(item).text());
-	        $('#mytable2').append('<tr class="simuSelection"><td><a href="' + $(item).text() + '/catalog.html" target="_blank">' + $(item).text() +
+	inputSelected.forEach(function(item) {
+		//console.log(item);
+	        $('#mytable2').append('<tr class="simuSelection"><td><a href="' + item + '/catalog.html" target="_blank">' + item +
 						'</a><img class="close" src="close.png"/></td></tr>');
 	});
 
 	removeDuplicateCart();	
 	updateStateButtonRun();
-	
+
 });
 
 //=====================================================
@@ -439,7 +441,7 @@ $(document).on('click', '.close', function() {
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">Simu Finder - 2017/08/31</div>
+      <div class="navbar-brand">Simu Finder - 2017/10/01</div>
     </div>
     <ul class="nav navbar-nav">
     </ul>
@@ -474,7 +476,7 @@ $(document).on('click', '.close', function() {
 
   <button type="button" class="btn btn-default" id="runInterMonitoring" title="Possible when <= 15 simulations" disabled="disabled">Run Inter-Monitoring</button>
 
-  <button type="button" class="btn btn-default" id="runExecutionAnalysis" title="Possible when <= 200 simulations" disabled="disabled">Run Execution Analysis</button>
+  <button type="button" class="btn btn-default" id="runExecutionAnalysis" title="Possible when <= 300 simulations" disabled="disabled">Run Execution Analysis</button>
 
 
 </div>
